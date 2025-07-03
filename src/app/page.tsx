@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import { Globe, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -24,7 +24,7 @@ const slides = [
   },
   {
     title: "Typography",
-    content: `To further refine the design's professionalism and readability, I recommend streamlining the typography and spacing for a cleaner, more cohesive layout. Currently, the formatting varies in font sizes, spacing, and hierarchy, which can distract from the content's clarity.
+    content: `To further refine the design{"'"}s professionalism and readability, I recommend streamlining the typography and spacing for a cleaner, more cohesive layout. Currently, the formatting varies in font sizes, spacing, and hierarchy, which can distract from the content's clarity.
 <br>
 Proposed Adjustments:<br>
 <li> Limit Text Styles to Three Levels </li> 
@@ -54,7 +54,7 @@ Proposed Fix:<br>
     image: "/importantdocuments.png"
   },
   {
-    title: "We're Palomino. Let's fix it together.",
+    title: `We{"'"}re Palomino. Let{"'"}s fix it together.`,
     content: null
   },
 ]
@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="w-full">
-      {/* Text slides with optional content panels */}
+
       {slides.map((slide, i) => (
         <section
           key={i}
@@ -132,7 +132,7 @@ export default function Home() {
         </section>
       ))}
 
-      {/* Portfolio title slide - made same size as other sections */}
+
       <section className="panel h-screen flex flex-col items-center justify-center px-4 bg-black">
         <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
           Sites We've Built
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Us section */}
+      
       <section className="panel h-screen flex flex-col items-center justify-center px-4 bg-black">
         <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
           Get In Touch
