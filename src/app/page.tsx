@@ -19,12 +19,12 @@ const slides = [
   },
   {
     title: "Colour Palette",
-    content: "The turquoise, while vibrant, can be somewhat harsh on the eyes, especially against the dark blue/navy background. <br> This contrast may reduce readability and create visual fatigue over time. I recommend replacing the turquoise with a softer, more complementary color such as <span class='text-light-blue'>Light Gray-Blue (#A7C7E7)</span> or <span class='text-muted-teal'>Muted Teal (#5F9EA0)</span>",
+    content: "The turquoise, while vibrant, can be somewhat harsh on the eyes, especially against the dark blue/navy background. <br> This contrast may reduce readability and create visual fatigue over time. I recommend replacing the turquoise with a softer, more complementary color such as Light Gray-Blue (#A7C7E7) or Muted Teal (#5F9EA0)",
     image: "/colourrecommendations.png"
   },
   {
     title: "Typography",
-    content: `To further refine the design{"'"}s professionalism and readability, I recommend streamlining the typography and spacing for a cleaner, more cohesive layout. Currently, the formatting varies in font sizes, spacing, and hierarchy, which can distract from the content's clarity.
+    content: `To further refine  professionalism and readability, I recommend streamlining the typography and spacing for a cleaner, more cohesive layout. Currently, the formatting varies in font sizes, spacing, and hierarchy, which can distract from the content&apos;s clarity.
 <br>
 Proposed Adjustments:<br>
 <li> Limit Text Styles to Three Levels </li> 
@@ -54,7 +54,7 @@ Proposed Fix:<br>
     image: "/importantdocuments.png"
   },
   {
-    title: `We{"'"}re Palomino. Let{"'"}s fix it together.`,
+    title: `We&apos;re Palomino. Let&apos;s fix it together.`,
     content: null
   },
 ]
@@ -135,7 +135,7 @@ export default function Home() {
 
       <section className="panel h-screen flex flex-col items-center justify-center px-4 bg-black">
         <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
-          Sites We've Built
+          Sites We&apos;ve Built
         </h1>
         <div className="max-w-4xl w-full mx-auto mt-8 p-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
