@@ -6,6 +6,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import { Mail } from 'lucide-react'
 import Image from 'next/image'
 
+
 gsap.registerPlugin(ScrollTrigger)
 
 const slides = [
@@ -66,11 +67,13 @@ const projects = [
   { name: 'Savaria', url: 'https://www.savaria.com/?lang=en', image: "/Savaria.png" },
 ]
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sections = gsap.utils.toArray(".panel")
+    const sections = gsap.utils.toArray<HTMLElement>(".panel");
 
     sections.forEach((panel) => {
       gsap.fromTo(panel,
@@ -89,13 +92,13 @@ export default function Home() {
             invalidateOnRefresh: true,
           },
         }
-      )
-    })
+      );
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
     <div ref={containerRef} className="w-full">
