@@ -61,10 +61,10 @@ Proposed Fix:<br>
 ]
 
 const projects = [
-  { name: 'Doane Grant Thornton', url: 'https://www.doanegrantthornton.ca/', image: "/Dgt.png" },
+  { name: 'Doane Grant Thornton', url: 'https://www.doanegrantthornton.ca/', image: "/dgt.png" },
   { name: 'Banyan Community Services', url: 'https://banyancommunityservices.org/', image: "/banyan.png" },
   { name: 'Neighbourly Pharmacy', url: 'https://www.neighbourlypharmacy.ca/', image: "/nbly.png" },
-  { name: 'Savaria', url: 'https://www.savaria.com/?lang=en', image: "/Savaria.png" },
+  { name: 'Savaria', url: 'https://www.savaria.com/?lang=en', image: "/savaria.png" },
 ]
 
 gsap.registerPlugin(ScrollTrigger);
