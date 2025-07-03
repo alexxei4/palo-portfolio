@@ -55,7 +55,7 @@ Proposed Fix:<br>
     image: "/importantdocuments.png"
   },
   {
-    title: `We&apos;re Palomino. Let&apos;s fix it together.`,
+    title: `We're Palomino. Let's fix it together.`,
     content: null
   },
 ]
