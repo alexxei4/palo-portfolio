@@ -1,103 +1,189 @@
-import Image from "next/image";
+"use client"
+
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import { Globe, Mail } from 'lucide-react'
+import Image from 'next/image'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const slides = [
+  {
+    title: "We build fast, beautiful websites.",
+    content: null
+  },
+  {
+    title: "Here is how we can help and some things we have noticed",
+    content: null
+  },
+  {
+    title: "Colour Palette",
+    content: "The turquoise, while vibrant, can be somewhat harsh on the eyes, especially against the dark blue/navy background. <br> This contrast may reduce readability and create visual fatigue over time. I recommend replacing the turquoise with a softer, more complementary color such as <span class='text-light-blue'>Light Gray-Blue (#A7C7E7)</span> or <span class='text-muted-teal'>Muted Teal (#5F9EA0)</span>",
+    image: "/colourrecommendations.png"
+  },
+  {
+    title: "Typography",
+    content: `To further refine the design's professionalism and readability, I recommend streamlining the typography and spacing for a cleaner, more cohesive layout. Currently, the formatting varies in font sizes, spacing, and hierarchy, which can distract from the content's clarity.
+<br>
+Proposed Adjustments:<br>
+<li> Limit Text Styles to Three Levels </li> 
+<li>  Consistent Spacing </li> 
+<li>  Hierarchy Fixes </li>  `,
+  },
+  {
+    title: "Navigation",
+    content: `Problem: <br>
+<li> The "Flow-Through LPs" list dominates the dropdown </li>
+<li> Other key products get visually buried</li><br>
+
+Solution: Nested Grouping<br>
+<li>Collapse repetitive listings under expandable categories</li>
+<li>Benefits: Shorter dropdown, clearer hierarchy, mobile-friendly</li>`,
+  },
+  {
+    title: "Documents Div",
+    content: `Current Problem:<br>
+<li> 1/3-width layout leaves empty space </li>
+<li> Duplicate content</li><br>
+
+Proposed Fix:<br>
+<li>Switch to 1/2-width layout </li>
+<li> Remove empty sections </li>
+<li> Reorganize document structure</li>`,
+    image: "/importantdocuments.png"
+  },
+  {
+    title: "We're Palomino. Let's fix it together.",
+    content: null
+  },
+]
+
+const projects = [
+  { name: 'Doane Grant Thornton', url: 'https://www.doanegrantthornton.ca/', image: "/Dgt.png" },
+  { name: 'Banyan Community Services', url: 'https://banyancommunityservices.org/', image: "/banyan.png" },
+  { name: 'Neighbourly Pharmacy', url: 'https://www.neighbourlypharmacy.ca/', image: "/nbly.png" },
+  { name: 'Savaria', url: 'https://www.savaria.com/?lang=en', image: "/Savaria.png" },
+]
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const containerRef = useRef(null)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  useEffect(() => {
+    const sections = gsap.utils.toArray(".panel")
+
+    sections.forEach((panel) => {
+      gsap.fromTo(panel,
+        { autoAlpha: 0, y: 100 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: panel,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+            markers: false,
+            invalidateOnRefresh: true,
+          },
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
+  return (
+    <div ref={containerRef} className="w-full">
+      {/* Text slides with optional content panels */}
+      {slides.map((slide, i) => (
+        <section
+          key={i}
+          className="panel h-screen flex flex-col items-center justify-center px-4 bg-black"
+          style={{ willChange: 'transform' }}
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
+            {slide.title}
+          </h1>
+          
+          {slide.content && (
+            <div className="max-w-4xl w-full mx-auto mt-8 p-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
+              {slide.image && (
+                <div className="mb-6">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    width={800}
+                    height={450}
+                    className="w-full h-auto rounded-lg object-contain max-h-[300px]"
+                  />
+                </div>
+              )}
+              <p 
+                className="text-stone-200 text-base md:text-lg leading-relaxed [&>span]:font-serif [&>span]:italic"
+                dangerouslySetInnerHTML={{ __html: slide.content }}
+              />
+            </div>
+          )}
+        </section>
+      ))}
+
+      {/* Portfolio title slide - made same size as other sections */}
+      <section className="panel h-screen flex flex-col items-center justify-center px-4 bg-black">
+        <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
+          Sites We've Built
+        </h1>
+        <div className="max-w-4xl w-full mx-auto mt-8 p-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, i) => (
+              <a
+                key={`project-${i}`}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300"
+              >
+                {project.image && (
+                  <div className="mb-4">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto rounded-lg object-contain max-h-[150px]"
+                    />
+                  </div>
+                )}
+                <h2 className="text-xl md:text-2xl font-bold text-stone-100">
+                  {project.name}
+                </h2>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Us section */}
+      <section className="panel h-screen flex flex-col items-center justify-center px-4 bg-black">
+        <h1 className="text-4xl md:text-6xl font-bold text-center text-stone-100 max-w-4xl leading-tight mb-8">
+          Get In Touch
+        </h1>
+        <div className="max-w-4xl w-full mx-auto mt-8 p-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 shadow-2xl text-center">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://cloud.webpal.net/contact.php"
             target="_blank"
             rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white/20 hover:bg-white/30 border border-white/30 rounded-lg text-stone-100 text-xl font-medium transition-all duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            <Mail className="w-6 h-6 mr-2" />
+            Contact Us
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
     </div>
-  );
+  )
 }
