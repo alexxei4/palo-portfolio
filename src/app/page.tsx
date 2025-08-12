@@ -15,11 +15,11 @@ const slides = [
   },
   {
     title: "Here is how we can help",
-    content: "Did you know that visitors form an opinion about your business in just 0.05 seconds? If your website looks outdated, loads slowly, or isn’t mobile-friendly, you could be losing customers before they even explore what you offer. We design stunning, high-performance websites that make a powerful first impression."
+    content: "Did you know that visitors form an opinion about your business in just 0.05 seconds? If your website looks outdated, loads slowly, or isn&apos;t mobile-friendly, you could be losing customers before they even explore what you offer. We design stunning, high-performance websites that make a powerful first impression."
   },
   {
     title: "Security & Reliability",
-    content: "Older websites are vulnerable to hacking, malware, and crashes. We use secure, up-to-date technologies to protect your site (and your customers’ data) while ensuring maximum uptime"
+    content: "Older websites are vulnerable to hacking, malware, and crashes. We use secure, up-to-date technologies to protect your site (and your customers&apos; data) while ensuring maximum uptime"
   },
   {
     title: "Trustworthi-ness",
@@ -27,14 +27,14 @@ const slides = [
   },
   {
     title: "Better User Experience = More Sales",
-    content: `Confusing navigation, broken links, and poor layouts drive customers away. We craft intuitive, user-friendly websites that guide visitors toward taking action—whether it’s buying, contacting you, or subscribing.`
+    content: `Confusing navigation, broken links, and poor layouts drive customers away. We craft intuitive, user-friendly websites that guide visitors toward taking action—whether it&apos;s buying, contacting you, or subscribing.`
   },
   {
     title: "Integration & Functionality",
-    content: `Need booking systems, payment gateways, or CRM integrations? We don’t just design websites—we build powerful tools that streamline your business operations.`
+    content: `Need booking systems, payment gateways, or CRM integrations? We don&apos;t just design websites—we build powerful tools that streamline your business operations.`
   },
   {
-    title: `We're Palomino. Let's fix it together.`,
+    title: `We&apos;re Palomino. Let&apos;s fix it together.`,
     content: `Here are some satisfied customers`
   },
 ]
@@ -115,7 +115,7 @@ export default function Home() {
             onClick={() => goToSection(slides.length)}
             className="block text-left w-full hover:text-[#d4693b] transition-colors"
           >
-            Sites We've Built
+            Sites We&apos;ve Built
           </button>
           <button
             onClick={() => goToSection(slides.length + 1)}
