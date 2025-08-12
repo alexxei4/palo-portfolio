@@ -34,7 +34,7 @@ const slides = [
     content: `Need booking systems, payment gateways, or CRM integrations? We don&apos;t just design websites—we build powerful tools that streamline your business operations.`
   },
   {
-    title: `We&apos;re Palomino. Let&apos;s fix it together.`,
+    title: `We're Palomino. Let's fix it together.`,
     content: `Here are some satisfied customers`
   },
 ]
